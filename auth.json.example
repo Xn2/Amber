@@ -1,0 +1,8 @@
+{
+	"officialbot" : "if your bot is an official bot account, type 1, if it is a regular one, put 0",
+	"token" : "your bot's login token (only for official bot accounts)",
+	"email" : "your bot's email (only for regular accounts)",
+	"password" : "your bot's password (only for regular accounts)",
+	"ownerid" : "the userID of the owner of the bot",
+	"logchannelid" : "(optional) a channelID where logs will be sent"
+}

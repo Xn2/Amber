@@ -11,13 +11,20 @@ try {
 
 var bot = new Discord.Client();
 
-bot.loginWithToken(AuthDetails.token);
+if (AuthDetails.officialbot === "0")
+{
+	bot.login(AuthDetails.email, AuthDetails.password)
+}
+if (AuthDetails.officialbot === "1")
+{
+	bot.loginWithToken(AuthDetails.token)
+}
 
 bot.on("ready", function (message)
 {
 console.log("")
 console.log("Amber is online and ready to rock!".green)
-bot.sendMessage(AuthDetails.ownerid, "Ambey is ready, Daddy! :heart:");
+bot.sendMessage(AuthDetails.ownerid, "Amber is ready, Daddy! :heart:");
 bot.sendMessage(AuthDetails.logchannelid, "Amber started.")
 });
 
