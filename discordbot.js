@@ -14,27 +14,25 @@ bot.sendMessage("214067025755111426", "Amber started.")
 
 bot.on("message", function (message)
 {
-	if (message.author.id === "213787424948486145")
-	{
-		
-	}
-
-	if (message.content === "Amber")
-	{
-		bot.sendMessage(message, "Hi")
-	}
-
-	if (message.content === "Amber, am I your master?")
-	{
-		if (message.author.id === "94913717988229120")
+	if (message.channel.isPrivate === false)
+		{
+		 	if (message.content === "Amber")
 			{
-				bot.reply(message, "Yes Daddy :heart:");
+				bot.sendMessage(message, "Hi")
 			}
-		else
+			
+			if (message.content === "Amber, am I your master?")
 			{
-				bot.reply(message, "No you fucker, I belong to my daddy :heart:");
+				if (message.author.id === "94913717988229120")
+					{
+						bot.reply(message, "Yes Daddy :heart:");
+					}
+				else
+					{
+						bot.reply(message, "No you fucker, I belong to my daddy :heart:");
+					}
 			}
-	}
+		}
 
 	if (message.channel.isPrivate === true)
 	{
