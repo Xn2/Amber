@@ -45,3 +45,11 @@ bot.on("message", function (message)
 		}
 	} 
 });
+
+bot.on("userBanned", function (message)
+{
+let banneduserObject
+bot.sendMessage("94913717988229120", "banned user" + User)
+});
+
+
