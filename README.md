@@ -10,4 +10,4 @@ Amber is a small chat bot made for Discord written in NodeJS.
 
 - Rename the "auth.json.example" file into "auth.json" and put your credientals 
 
-- type "node Amber.js" to start the bot
+- Use "node Amber.js" in the command prompt to start the bot
