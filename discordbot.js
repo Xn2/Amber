@@ -8,17 +8,13 @@ bot.sendMessage("94913717988229120", "Amber Bot started");
 
 bot.on("ready", function (message)
 {
+console.log("Amber is online!")
 bot.sendMessage("94913717988229120", "Ambey is ready, Daddy! :heart:");
 bot.sendMessage("214067025755111426", "Amber started.")
 });
 
 bot.on("message", function (message)
 {
-	if (message.author.id === "213787424948486145")
-	{
-		
-	}
-
 	if (message.content === "Amber")
 	{
 		bot.sendMessage(message, "Hi")
@@ -41,15 +37,11 @@ bot.on("message", function (message)
 		if (message.content === "!disconnect" && message.author.id === "94913717988229120")
 		{
 			bot.sendMessage(message, "Bye Daddy...");
+			console.log("!disconnect command recieved, terminating...")
 			bot.logout();
 		}
 	} 
 });
 
-bot.on("userBanned", function (message)
-{
-let banneduserObject
-bot.sendMessage("94913717988229120", "banned user" + User)
-});
 
 
