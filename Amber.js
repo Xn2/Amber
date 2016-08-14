@@ -9,6 +9,8 @@ try {
 	process.exit();
 }
 
+var log = require("simple-node-logger").createSimpleLogger("./amber.log");
+
 try {
 	var Version = require("./version.json");
 } catch (e){
@@ -32,7 +34,7 @@ bot.on("ready", function (message)
 {
 bot.setUsername(AuthDetails.botname)
 console.log("");
-console.log(AuthDetails.botname.green + " " + Version.version.green + " is online and ready to rock!".green);
+log.info(AuthDetails.botname.green + " " + Version.version.green + " is online and ready to rock!".green);
 bot.sendMessage(AuthDetails.ownerid, AuthDetails.botname + " is ready, Daddy! :heart:");
 bot.sendMessage(AuthDetails.logchannelid, AuthDetails.botname + " started.");
 });
@@ -41,6 +43,15 @@ bot.on("message", function (message)
 {
 	if (message.channel.isPrivate === false)
 	{
+		if (AuthDetails.logenable === "0")
+		{
+			console.log(message.author.name + "#" + message.author.discriminator + "@#" + message.channel.name + " on " + message.server.name + " : " + message.content);
+		}
+		else
+		{
+			log.info(message.author.name + "#" + message.author.discriminator + "@#" + message.channel.name + " on " + message.server.name + " : " + message.content);
+		}	
+		
 		if (message.content === "!help")
 		{
 			if (message.author.id === AuthDetails.ownerid)
@@ -106,7 +117,7 @@ bot.on("message", function (message)
 		if (message.content === "!disconnect")
 		{
 			bot.sendMessage(message, "Bye Daddy...");
-			console.log("!disconnect command recieved, terminating...");
+			log.info("!disconnect command recieved, terminating...");
 			process.exit();
 		}
 

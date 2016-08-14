@@ -38,3 +38,6 @@ jspm_packages
 
 # Auth file
 config.json
+
+# Log file
+amber.log
