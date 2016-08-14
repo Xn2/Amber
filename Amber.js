@@ -1,3 +1,5 @@
+var log = require("simple-node-logger").createSimpleLogger("./amber.log");
+
 var Discord = require ("discord.js");
 
 var colors = require ("colors");
@@ -8,8 +10,6 @@ try {
 	console.log("Config file is missing or incorrect! Did you properly rename config.json.example into config.json?".red);
 	process.exit();
 }
-
-var log = require("simple-node-logger").createSimpleLogger("./amber.log");
 
 try {
 	var Version = require("./version.json");
@@ -29,12 +29,12 @@ if (AuthDetails.officialbot === "1")
 	bot.loginWithToken(AuthDetails.token);
 }
 
-
 bot.on("ready", function (message)
 {
 bot.setUsername(AuthDetails.botname)
 console.log("");
-log.info(AuthDetails.botname.green + " " + Version.version.green + " is online and ready to rock!".green);
+console.log(AuthDetails.botname.green + " " + Version.version.green + " is online and ready to rock!".green);
+console.log("");
 bot.sendMessage(AuthDetails.ownerid, AuthDetails.botname + " is ready, Daddy! :heart:");
 bot.sendMessage(AuthDetails.logchannelid, AuthDetails.botname + " started.");
 });
