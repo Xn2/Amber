@@ -43,7 +43,14 @@ bot.on("message", function (message)
 	{
 		if (message.content === "!help")
 		{
-			bot.sendMessage(message.author.id, "AmberBot version **" + Version.version + "**, Published on **" + Version.releasedate + "**\n\n**Github** : <https://github.com/Xn2/Amber>\n\n**Invite link** : " + AuthDetails.invitelink);
+			if (message.author.id === AuthDetails.ownerid)
+			{
+				bot.sendMessage(message.author.id, "AmberBot version **" + Version.version + "**, Published on **" + Version.releasedate + "**\n\n**Github** : <https://github.com/Xn2/Amber>\n\n**Invite link** : " + AuthDetails.invitelink + "\n\n**Commands list** : <http://s.xn2.fr/ambercommands>" + "\n\nYou are the **owner** of the bot");
+			}
+			else
+			{
+				bot.sendMessage(message.author.id, "AmberBot version **" + Version.version + "**, Published on **" + Version.releasedate + "**\n\n**Github** : <https://github.com/Xn2/Amber>\n\n**Invite link** : " + AuthDetails.invitelink + "\n\n**Commands list** : <http://s.xn2.fr/ambercommands>");
+			}
 		}
 
 		if (message.content === "!uptime")
@@ -105,7 +112,7 @@ bot.on("message", function (message)
 
 		if (message.content === "!help")
 		{
-			bot.sendMessage(message.author.id, "AmberBot version **" + Version.version + "**, Published on **" + Version.releasedate + "**\n\n**Github** : <https://github.com/Xn2/Amber>\n\n**Invite link** : " + AuthDetails.invitelink + "\n\nYou are the **owner** of the bot");
+			bot.sendMessage(message.author.id, "AmberBot version **" + Version.version + "**, Published on **" + Version.releasedate + "**\n\n**Github** : <https://github.com/Xn2/Amber>\n\n**Invite link** : " + AuthDetails.invitelink + "\n\n**Commands list** : <http://s.xn2.fr/ambercommands>" + "\n\nYou are the **owner** of the bot");
 		}
 	} 	
 
@@ -116,7 +123,7 @@ bot.on("message", function (message)
 			bot.sendMessage(message.author.id, "Type `!help` for help.")
 		}
 		else{
-			bot.sendMessage(message.author.id, "AmberBot version **" + Version.version + "**, Published on **" + Version.releasedate + "**\n\n**Github** : <https://github.com/Xn2/Amber>\n\n**Invite link** : " + AuthDetails.invitelink);
+			bot.sendMessage(message.author.id, "AmberBot version **" + Version.version + "**, Published on **" + Version.releasedate + "**\n\n**Github** : <https://github.com/Xn2/Amber>\n\n**Invite link** : " + AuthDetails.invitelink + "\n\n**Commands list** : <http://s.xn2.fr/ambercommands>");
 		}
 	}
 });
