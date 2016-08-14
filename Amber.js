@@ -18,6 +18,11 @@ try {
 	process.exit();
 }
 
+var iscopying = false;
+var usercopying = "None";
+var usercopyingid = "None";
+var hascopied;
+
 var bot = new Discord.Client();
 
 if (AuthDetails.officialbot === "0")
@@ -43,6 +48,8 @@ bot.on("message", function (message)
 {
 	if (message.channel.isPrivate === false)
 	{
+		hascopied = false;
+
 		if (AuthDetails.logenable === "0")
 		{
 			console.log(message.author.name + "#" + message.author.discriminator + "@#" + message.channel.name + " on " + message.server.name + " : " + message.content);
@@ -51,7 +58,7 @@ bot.on("message", function (message)
 		{
 			log.info(message.author.name + "#" + message.author.discriminator + "@#" + message.channel.name + " on " + message.server.name + " : " + message.content);
 		}	
-		
+
 		if (message.content === "!help")
 		{
 			if (message.author.id === AuthDetails.ownerid)
@@ -91,7 +98,31 @@ bot.on("message", function (message)
 
 		if (message.content === "!copy")
 		{
-			bot.sendMessage(message, "")
+			iscopying = true;
+			bot.sendMessage(message, "Copying " + message.author.name + "'s messages, use !stopcopy to stop.");
+			usercopying = message.author.name;
+			usercopyingid = message.author.id;
+			hascopied = true
+		}
+
+		if (message.content === "!stopcopy")
+		{
+			if (iscopying === false)
+			{
+				bot.sendMessage(message, "I'm not copying anyone.");
+			}
+
+			if (iscopying === true)
+			{
+				iscopying = false;
+				bot.sendMessage(message, "Stopped copying " + message.author.name + "'s messages.");
+			}
+		}
+
+		if (iscopying === true && hascopied === false && usercopyingid === message.author.id)
+		{
+			bot.sendMessage(message, message.content);
+			hascopied = true;
 		}
 
 		if (message.content === AuthDetails.botname)
