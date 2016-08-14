@@ -1,8 +1,23 @@
-var log = require("simple-node-logger").createSimpleLogger("./amber.log");
-
-var Discord = require ("discord.js");
-
+try {
 var colors = require ("colors");
+} catch (e){
+	console.log("AmberBot requires colors, and it's missing, please execute npm install colors");
+	process.exit();
+}
+
+try {
+var log = require("simple-node-logger").createSimpleLogger("./amber.log");
+} catch (e){
+	console.log("AmberBot requires simple-node-logger, and it's missing, please execute npm install simple-node-logger".red);
+	process.exit();
+}
+
+try {
+var Discord = require ("discord.js");
+} catch (e){
+	console.log("AmberBot requires discord.js, and it's missing, please execute npm install discord.js".red);
+	process.exit();
+}
 
 try {
 	var AuthDetails = require("./config.json");
