@@ -12,5 +12,5 @@ Sends a random nsfw image from oboobs.ru | ~10000 images in total
 ### !disconnect
 **[Owner only]** Kills the bot.
 
-### @BotName 
+### BotName 
 Says "Hi".
