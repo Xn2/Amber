@@ -14,7 +14,7 @@ var log = require("simple-node-logger").createSimpleLogger("./amber.log");
 try {
 	var Version = require("./version.json");
 } catch (e){
-	console.log("version.json is missing of incorrct!".red);
+	console.log("version.json is missing of incorrcet!".red);
 	process.exit();
 }
 
