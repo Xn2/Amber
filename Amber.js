@@ -9,6 +9,13 @@ try {
 	process.exit();
 }
 
+try {
+	var Version = require("./version.json");
+} catch (e){
+	console.log("version.json is missing of incorrct!".red);
+	process.exit();
+}
+
 var bot = new Discord.Client();
 
 if (AuthDetails.officialbot === "0")
@@ -23,15 +30,20 @@ if (AuthDetails.officialbot === "1")
 bot.on("ready", function (message)
 {
 console.log("");
-console.log("Amber is online and ready to rock!".green);
-bot.sendMessage(AuthDetails.ownerid, "Amber is ready, Daddy! :heart:");
-bot.sendMessage(AuthDetails.logchannelid, "Amber started.");
+console.log(AuthDetails.botname.green + " is online and ready to rock!".green);
+bot.sendMessage(AuthDetails.ownerid, AuthDetails.botname + " is ready, Daddy! :heart:");
+bot.sendMessage(AuthDetails.logchannelid, AuthDetails.botname + " started.");
 });
 
 bot.on("message", function (message)
 {
 	if (message.channel.isPrivate === false)
 	{
+		if (message.content === "!help")
+		{
+			bot.sendMessage(message.author.id, "AmberBot version **" + Version.version + "**, Published on **" + Version.releasedate + "**\n\n**Github** : <https://github.com/Xn2/Amber>\n\n**Invite link** : " + AuthDetails.invitelink);
+		}
+
 		if (message.content === "!uptime")
 		{
 			var time = bot.uptime / 1000;
@@ -40,7 +52,7 @@ bot.on("message", function (message)
 			var time = time - hours * 3600;
 			var minutes = Math.floor (time / 60);
 			var seconds = time - minutes * 60;
-			bot.sendMessage(message,"Amber has been running for " + hours + " hours, " + minutes + " minutes, " + seconds + " seconds.");
+			bot.sendMessage(message, AuthDetails.botname + " has been running for " + hours + " hours, " + minutes + " minutes, " + seconds + " seconds.");
 		}
 
 		if (message.content === "!rdmboobs")
@@ -49,7 +61,7 @@ bot.on("message", function (message)
 			bot.sendMessage(message, "http://media.oboobs.ru/boobs_preview/0" + boobspicid + ".jpg");
 		}
 
-		if (message.content === "Amber")
+		if (message.content === AuthDetails.botname)
 		{
 			bot.sendMessage(message, "Hi");
 		}
