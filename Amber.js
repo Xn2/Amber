@@ -79,16 +79,31 @@ bot.on("message", function (message)
 		}
 	}
 
-
-	if (message.channel.isPrivate === true)
+	if (message.channel.isPrivate === true && message.author.id === AuthDetails.ownerid)
 	{
-		if (message.content === "!disconnect" && message.author.id === AuthDetails.ownerid)
+		if (message.content === "!disconnect")
 		{
 			bot.sendMessage(message, "Bye Daddy...");
 			console.log("!disconnect command recieved, terminating...");
 			process.exit();
 		}
-	} 
+
+		if (message.content === "!help")
+		{
+			bot.sendMessage(message.author.id, "AmberBot version **" + Version.version + "**, Published on **" + Version.releasedate + "**\n\n**Github** : <https://github.com/Xn2/Amber>\n\n**Invite link** : " + AuthDetails.invitelink + "\n\nYou are the **owner** of the bot");
+		}
+	} 	
+
+	if (message.channel.isPrivate === true && message.author.id !== AuthDetails.ownerid)
+	{
+		if (message.content !== "!help")
+		{
+			bot.sendMessage(message.author.id, "Type !help for help.")
+		}
+		else{
+			bot.sendMessage(message.author.id, "AmberBot version **" + Version.version + "**, Published on **" + Version.releasedate + "**\n\n**Github** : <https://github.com/Xn2/Amber>\n\n**Invite link** : " + AuthDetails.invitelink);
+		}
+	}
 });
 
 
