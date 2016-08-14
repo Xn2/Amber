@@ -4,8 +4,8 @@
 	"email" : "your bot's email (only for regular accounts)",
 	"password" : "your bot's password (only for regular accounts)",
 	"ownerid" : "the userID of the owner of the bot",
-	"botname" : "the name of your bot"
+	"botname" : "the name of your bot",
 	"invitelink" : "(optional) your bot's invite link if you have an official bot account",
-	"logchannelid" : "(optional) a channelID where logs will be sent"
+	"logchannelid" : "(optional) a channelID where logs will be sent",
 	"nsfwenable" : "0"
 }
