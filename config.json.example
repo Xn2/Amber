@@ -7,4 +7,5 @@
 	"botname" : "the name of your bot"
 	"invitelink" : "(optional) your bot's invite link if you have an official bot account",
 	"logchannelid" : "(optional) a channelID where logs will be sent"
+	"nsfwenable" : "0"
 }

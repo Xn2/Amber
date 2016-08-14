@@ -3,9 +3,9 @@ var Discord = require ("discord.js");
 var colors = require ("colors");
 
 try {
-	var AuthDetails = require("./auth.json");
+	var AuthDetails = require("./config.json");
 } catch (e){
-	console.log("Auth file is missing or incorrect! Did you properly rename auth.json.example into auth.json?".red);
+	console.log("Config file is missing or incorrect! Did you properly rename config.json.example into config.json?".red);
 	process.exit();
 }
 
@@ -27,10 +27,12 @@ if (AuthDetails.officialbot === "1")
 	bot.loginWithToken(AuthDetails.token);
 }
 
+
 bot.on("ready", function (message)
 {
+bot.setUsername(AuthDetails.botname)
 console.log("");
-console.log(AuthDetails.botname.green + " is online and ready to rock!".green);
+console.log(AuthDetails.botname.green + " " + Version.version.green + " is online and ready to rock!".green);
 bot.sendMessage(AuthDetails.ownerid, AuthDetails.botname + " is ready, Daddy! :heart:");
 bot.sendMessage(AuthDetails.logchannelid, AuthDetails.botname + " started.");
 });
@@ -57,8 +59,21 @@ bot.on("message", function (message)
 
 		if (message.content === "!rdmboobs")
 		{
-			var boobspicid = Math.floor(Math.random() * 9999);
-			bot.sendMessage(message, "http://media.oboobs.ru/boobs_preview/0" + boobspicid + ".jpg");
+			if (AuthDetails.nsfwenable === "0")
+			{
+				bot.sendMessage(message, "Not safe for work commands are not enabled, edit `auth.json` to enable them");
+			}
+
+			if (AuthDetails.nsfwenable === "1")
+			{
+				var boobspicid = Math.floor(Math.random() * 9999);
+				bot.sendMessage(message, "http://media.oboobs.ru/boobs_preview/0" + boobspicid + ".jpg");
+			}
+		}
+
+		if (message.content === "!copy")
+		{
+			bot.sendMessage(message, "")
 		}
 
 		if (message.content === AuthDetails.botname)
@@ -98,7 +113,7 @@ bot.on("message", function (message)
 	{
 		if (message.content !== "!help")
 		{
-			bot.sendMessage(message.author.id, "Type !help for help.")
+			bot.sendMessage(message.author.id, "Type `!help` for help.")
 		}
 		else{
 			bot.sendMessage(message.author.id, "AmberBot version **" + Version.version + "**, Published on **" + Version.releasedate + "**\n\n**Github** : <https://github.com/Xn2/Amber>\n\n**Invite link** : " + AuthDetails.invitelink);
