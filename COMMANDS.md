@@ -13,10 +13,10 @@ Sends a random nsfw image from oboobs.ru | ~10000 images in total.
 Copies all messages of a single user untill you type use !stopcopy.
 
 ### !enablelogging
-Enables chat logging (needs a restart)
+**[Owner only]** Enables chat logging (needs a restart)
 
 ### !disablelogging
-Disables chat logging (needs a restart)
+**[Owner only]** Disables chat logging (needs a restart)
 
 ### !disconnect
 **[Owner only]** Kills the bot.
