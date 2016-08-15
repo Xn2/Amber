@@ -12,6 +12,8 @@ var log = require("simple-node-logger").createSimpleLogger("./amber.log");
 	process.exit();
 }
 
+var fs = require('fs')
+
 try {
 var Discord = require ("discord.js");
 } catch (e){
@@ -73,6 +75,58 @@ bot.on("message", function (message)
 		{
 			log.info(message.author.name + "#" + message.author.discriminator + "@#" + message.channel.name + " on " + message.server.name + " : " + message.content);
 		}	
+
+		if (message.content === "!enablelogging" && message.author.id === AuthDetails.ownerid)
+		{
+			if (AuthDetails.logenable === "0")
+			{
+				fs.readFile("config.json", 'utf8', function (err,data) {
+  					if (err) {
+    				return console.log(err);
+  					}
+  				var result = data.replace("\"logenable\" : \"0\"", "\"logenable\" : \"1\"");
+	
+  				fs.writeFile("config.json", result, 'utf8', function (err) {
+     			if (err) return console.log(err);
+  					});
+				});
+
+				AuthDetails = require("./config.json");
+
+				bot.sendMessage(message, "Logging has been enabled, a restart is needed for the changes to take effect.")
+			}
+
+			else
+			{
+				bot.sendMessage(message, "Logging is already enabled.")
+			}
+		}
+
+		if (message.content === "!disablelogging" && message.author.id === AuthDetails.ownerid)
+		{
+			if (AuthDetails.logenable === "1")
+			{
+				fs.readFile("config.json", 'utf8', function (err,data) {
+  				if (err) {
+    			return console.log(err);
+  				}
+  				var result = data.replace("\"logenable\" : \"1\"", "\"logenable\" : \"0\"");
+
+  				fs.writeFile("config.json", result, 'utf8', function (err) {
+	     		if (err) return console.log(err);
+  					});
+				});		
+
+				AuthDetails = require("./config.json");
+
+				bot.sendMessage(message, "Logging has been disabled, a restart is needed for the changes to take effect.")
+			}
+
+			else
+			{
+				bot.sendMessage(message, "Logging is already disabled.")
+			}
+		}
 
 		if (message.content === "!help")
 		{
