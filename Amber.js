@@ -160,7 +160,21 @@ bot.on("message", function (message)
 
 			if (AuthDetails.nsfwenable === "1")
 			{
-				var boobspicid = Math.floor(Math.random() * 9999);
+				var picid = Math.floor(Math.random() * 9999);
+				bot.sendMessage(message, "http://media.oboobs.ru/boobs_preview/0" + boobspicid + ".jpg");
+			}
+		}
+
+		if (message.content === "!rdmass")
+		{
+			if (AuthDetails.nsfwenable === "0")
+			{
+				bot.sendMessage(message, "Not safe for work commands are not enabled, edit `auth.json` to enable them");
+			}
+
+			if (AuthDetails.nsfwenable === "1")
+			{
+				var picid = Math.floor(Math.random() * 3850) + 1000;
 				bot.sendMessage(message, "http://media.oboobs.ru/boobs_preview/0" + boobspicid + ".jpg");
 			}
 		}
