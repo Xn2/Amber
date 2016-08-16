@@ -175,7 +175,7 @@ bot.on("message", function (message)
 			if (AuthDetails.nsfwenable === "1")
 			{
 				var picid = Math.floor(Math.random() * 3850) + 1000;
-				bot.sendMessage(message, "http://media.oboobs.ru/boobs_preview/0" + picid + ".jpg");
+				bot.sendMessage(message, "http://media.obutts.ru/butts_preview/0" + picid + ".jpg");
 			}
 		}
 
