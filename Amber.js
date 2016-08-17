@@ -1,3 +1,4 @@
+//Calling dependencies
 try {
 var colors = require ("colors");
 } catch (e){
@@ -35,13 +36,16 @@ try {
 	process.exit();
 }
 
+//!copy variables stuff
 var iscopying = false;
 var usercopying = "None";
 var usercopyingid = "None";
 var hascopied;
 
+//Creating the actual bot
 var bot = new Discord.Client();
 
+//Login process either with token or email/pass
 if (AuthDetails.officialbot === "0")
 {
 	bot.login(AuthDetails.email, AuthDetails.password);
@@ -51,6 +55,7 @@ if (AuthDetails.officialbot === "1")
 	bot.loginWithToken(AuthDetails.token);
 }
 
+//What the bot does when it's ready
 bot.on("ready", function (message)
 {
 bot.setUsername(AuthDetails.botname)
@@ -61,12 +66,15 @@ bot.sendMessage(AuthDetails.ownerid, AuthDetails.botname + " is ready, Daddy! :h
 bot.sendMessage(AuthDetails.logchannelid, AuthDetails.botname + " started.");
 });
 
+//What the bot does each time a message is recieved
 bot.on("message", function (message)
 {
 	if (message.channel.isPrivate === false)
 	{
+		//!copy variable set to false
 		hascopied = false;
 
+		//Chat logging to console and/or file
 		if (AuthDetails.logenable === "0")
 		{
 			console.log(message.author.name + "#" + message.author.discriminator + "@#" + message.channel.name + " on " + message.server.name + " : " + message.content);
@@ -76,6 +84,7 @@ bot.on("message", function (message)
 			log.info(message.author.name + "#" + message.author.discriminator + "@#" + message.channel.name + " on " + message.server.name + " : " + message.content);
 		}	
 
+		//!enablelogging command
 		if (message.content === "!enablelogging" && message.author.id === AuthDetails.ownerid)
 		{
 			if (AuthDetails.logenable === "0")
@@ -100,6 +109,7 @@ bot.on("message", function (message)
 			}
 		}
 
+		//!disablelogging command
 		if (message.content === "!disablelogging" && message.author.id === AuthDetails.ownerid)
 		{
 			if (AuthDetails.logenable === "1")
@@ -124,6 +134,7 @@ bot.on("message", function (message)
 			}
 		}
 
+		//!enablensfw command
 		if (message.content === "!enablensfw" && message.author.id === AuthDetails.ownerid)
 		{
 			if (AuthDetails.nsfwenable === "0")
@@ -148,6 +159,7 @@ bot.on("message", function (message)
 			}
 		}
 
+		//!disablensfw command
 		if (message.content === "!disablensfw" && message.author.id === AuthDetails.ownerid)
 		{
 			if (AuthDetails.logenable === "1")
@@ -172,6 +184,7 @@ bot.on("message", function (message)
 			}
 		}
 
+		//!help command for public channels
 		if (message.content === "!help")
 		{
 			if (message.author.id === AuthDetails.ownerid)
@@ -184,6 +197,7 @@ bot.on("message", function (message)
 			}
 		}
 
+		//!uptime command
 		if (message.content === "!uptime")
 		{
 			var time = bot.uptime / 1000;
@@ -195,6 +209,7 @@ bot.on("message", function (message)
 			bot.sendMessage(message, AuthDetails.botname + " has been running for " + hours + " hours, " + minutes + " minutes, " + seconds + " seconds.");
 		}
 
+		//!rdmboobs command
 		if (message.content === "!rdmboobs")
 		{
 			if (AuthDetails.nsfwenable === "0")
@@ -209,6 +224,7 @@ bot.on("message", function (message)
 			}
 		}
 
+		//!rdmass command
 		if (message.content === "!rdmass")
 		{
 			if (AuthDetails.nsfwenable === "0")
@@ -223,6 +239,7 @@ bot.on("message", function (message)
 			}
 		}
 
+		//!copy command
 		if (message.content === "!copy")
 		{
 			iscopying = true;
@@ -232,6 +249,7 @@ bot.on("message", function (message)
 			hascopied = true
 		}
 
+		//!stopcopy command
 		if (message.content === "!stopcopy")
 		{
 			if (iscopying === false)
@@ -246,17 +264,20 @@ bot.on("message", function (message)
 			}
 		}
 
+		//Actual copying engine
 		if (iscopying === true && hascopied === false && usercopyingid === message.author.id)
 		{
 			bot.sendMessage(message, message.content);
 			hascopied = true;
 		}
 
+		//Says "Hi" if the message is the name of the bot
 		if (message.content === AuthDetails.botname)
 		{
 			bot.sendMessage(message, "Hi");
 		}
 
+		//Ownership checker
 		if (message.content === AuthDetails.botname + ", am I your master?")
 		{
 			if (message.author.id === AuthDetails.ownerid)
@@ -270,6 +291,7 @@ bot.on("message", function (message)
 		}
 	}
 
+	//!disconnect command
 	if (message.channel.isPrivate === true && message.author.id === AuthDetails.ownerid)
 	{
 		if (message.content === "!disconnect")
@@ -281,12 +303,14 @@ bot.on("message", function (message)
 			}, 5000);
 		}
 
+		//help command, for private channels and owner
 		if (message.content === "!help")
 		{
 			bot.sendMessage(message.author.id, "AmberBot version **" + Version.version + "**, Published on **" + Version.releasedate + "**\n\n**Github** : <https://github.com/Xn2/Amber>\n\n**Invite link** : " + AuthDetails.invitelink + "\n\n**Commands list** : <http://s.xn2.fr/ambercommands>" + "\n\nYou are the **owner** of the bot");
 		}
 	} 	
 
+	//!help command, for private channels
 	if (message.channel.isPrivate === true && message.author.id !== AuthDetails.ownerid)
 	{
 		if (message.content !== "!help")
