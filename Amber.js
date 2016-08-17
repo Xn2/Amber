@@ -63,6 +63,8 @@ bot.sendMessage(AuthDetails.logchannelid, AuthDetails.botname + " started.");
 
 bot.on("message", function (message)
 {
+	AuthDetails = require("./config.json");
+	
 	if (message.channel.isPrivate === false)
 	{
 		hascopied = false;
