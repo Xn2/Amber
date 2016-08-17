@@ -1,4 +1,4 @@
-# Commands in version **0.1.3 Alpha**
+# Commands in version **0.1.4 Alpha**
 
 ### !help
 Displays help on the bot via PM.
@@ -14,6 +14,12 @@ Sends a random nsfw image from obutts.ru | ~3000 images in total.
 
 ### !copy
 Copies all messages of a single user untill you type use !stopcopy.
+
+### !kick @Member
+**[Owner only]** Kicks the specified member from the current server (the bot needs a role with permission to kick)
+
+### !ban @Member
+**[Owner only]** Bans the specified member from the current server (the bot needs a role with permission to ban)
 
 ### !enablelogging
 **[Owner only]** Enables chat logging (needs a restart)

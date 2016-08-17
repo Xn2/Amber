@@ -67,10 +67,13 @@ bot.sendMessage(AuthDetails.logchannelid, AuthDetails.botname + " started.");
 });
 
 //What the bot does each time a message is recieved
-bot.on("message", function (message)
+bot.on("message", function (message, server)
 {
 	if (message.channel.isPrivate === false)
 	{
+		//Split message btw command name and arguments
+		var msplit = message.content.split(" ")
+
 		//!copy variable set to false
 		hascopied = false;
 
@@ -182,6 +185,58 @@ bot.on("message", function (message)
 			{
 				bot.sendMessage(message, "Nsfw commands are already **disabled**.")
 			}
+		}
+
+		//!kick command
+		if (msplit[0] === "!kick" && message.author.id === AuthDetails.ownerid) 
+		{
+			if (message.mentions)
+			{
+            	for (var user of message.mentions) 
+            	{
+               		bot.kickMember(user.id, message.channel.server.id);
+          	  	}
+			}
+
+			if (m.content.indexOf(' ') === -1) 
+			{
+				bot.sendMessage(message, "You must mention a user.")
+			}				
+		}
+
+		//!ban command
+		if (msplit[0] === "!ban" && message.author.id === AuthDetails.ownerid)
+		{
+			if (message.mentions)
+			{
+            	for (var user of message.mentions) 
+            	{
+               		bot.banMember(user.id, message.channel.server.id);
+          	  	}
+			}
+
+			if (m.content.indexOf(' ') === -1) 
+			{
+				bot.sendMessage(message, "You must mention a user.")
+			}
+		}
+
+		//!avatar command
+		if (msplit[0] === "!avatar")
+		{
+			if (message.mentions)
+			{
+            	for (var user of message.mentions) {
+               	bot.sendFile(message, user.avatarURL);
+          	  	}
+			}
+
+			if (message.content.indexOf(' ') === -1)
+			{
+				bot.sendFile(message, message.author.avatarURL)
+			}
+
+
 		}
 
 		//!help command for public channels
