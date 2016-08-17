@@ -21,6 +21,12 @@ Copies all messages of a single user untill you type use !stopcopy.
 ### !disablelogging
 **[Owner only]** Disables chat logging (needs a restart)
 
+### !enablensfw
+**[Owner only]** Enables NSFW commands (needs a restart)
+
+### !disablensfw
+**[Owner only]** Disables NSFW commands (needs a restart)
+
 ### !disconnect
 **[Owner only]** Kills the bot.
 

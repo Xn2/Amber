@@ -63,8 +63,6 @@ bot.sendMessage(AuthDetails.logchannelid, AuthDetails.botname + " started.");
 
 bot.on("message", function (message)
 {
-	AuthDetails = require("./config.json");
-	
 	if (message.channel.isPrivate === false)
 	{
 		hascopied = false;
@@ -93,8 +91,6 @@ bot.on("message", function (message)
   					});
 				});
 
-				AuthDetails = require("./config.json");
-
 				bot.sendMessage(message, "Logging has been enabled, a restart is needed for the changes to take effect.")
 			}
 
@@ -119,14 +115,60 @@ bot.on("message", function (message)
   					});
 				});		
 
-				AuthDetails = require("./config.json");
-
 				bot.sendMessage(message, "Logging has been disabled, a restart is needed for the changes to take effect.")
 			}
 
 			else
 			{
 				bot.sendMessage(message, "Logging is already disabled.")
+			}
+		}
+
+		if (message.content === "!enablensfw" && message.author.id === AuthDetails.ownerid)
+		{
+			if (AuthDetails.nsfwenable === "0")
+			{
+				fs.readFile("config.json", 'utf8', function (err,data) {
+  					if (err) {
+    				return console.log(err);
+  					}
+  				var result = data.replace("\"nsfwenable\" : \"0\"", "\"nsfwenable\" : \"1\"");
+	
+  				fs.writeFile("config.json", result, 'utf8', function (err) {
+     			if (err) return console.log(err);
+  					});
+				});
+
+				bot.sendMessage(message, "Nsfw commands have been **enabled**, a restart is needed for the changes to take effect.")
+			}
+
+			else
+			{
+				bot.sendMessage(message, "Nsfw commands are already **enabled**.")
+			}
+		}
+
+		if (message.content === "!disablensfw" && message.author.id === AuthDetails.ownerid)
+		{
+			if (AuthDetails.logenable === "1")
+			{
+				fs.readFile("config.json", 'utf8', function (err,data) {
+  				if (err) {
+    			return console.log(err);
+  				}
+  				var result = data.replace("\"nsfwenable\" : \"1\"", "\"nsfwenable\" : \"0\"");
+
+  				fs.writeFile("config.json", result, 'utf8', function (err) {
+	     		if (err) return console.log(err);
+  					});
+				});		
+
+				bot.sendMessage(message, "Nsfw commands have been **disabled**, a restart is needed for the changes to take effect.")
+			}
+
+			else
+			{
+				bot.sendMessage(message, "Nsfw commands are already **disabled**.")
 			}
 		}
 
@@ -215,7 +257,7 @@ bot.on("message", function (message)
 			bot.sendMessage(message, "Hi");
 		}
 
-		if (message.content === "Amber, am I your master?")
+		if (message.content === AuthDetails.botname + ", am I your master?")
 		{
 			if (message.author.id === AuthDetails.ownerid)
 				{
@@ -234,7 +276,9 @@ bot.on("message", function (message)
 		{
 			bot.sendMessage(message, "Bye Daddy...");
 			log.info("!disconnect command recieved, terminating...");
-			process.exit();
+			setTimeout(function() {
+    			console.log('Blah blah blah blah extra-blah');
+			}, 5000);
 		}
 
 		if (message.content === "!help")
