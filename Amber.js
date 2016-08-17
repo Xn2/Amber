@@ -91,12 +91,12 @@ bot.on("message", function (message)
   					});
 				});
 
-				bot.sendMessage(message, "Logging has been enabled, a restart is needed for the changes to take effect.")
+				bot.sendMessage(message, "Logging has been **enabled**, a restart is needed for the changes to take effect.")
 			}
 
 			else
 			{
-				bot.sendMessage(message, "Logging is already enabled.")
+				bot.sendMessage(message, "Logging is already **enabled**.")
 			}
 		}
 
@@ -115,12 +115,12 @@ bot.on("message", function (message)
   					});
 				});		
 
-				bot.sendMessage(message, "Logging has been disabled, a restart is needed for the changes to take effect.")
+				bot.sendMessage(message, "Logging has been **disabled**, a restart is needed for the changes to take effect.")
 			}
 
 			else
 			{
-				bot.sendMessage(message, "Logging is already disabled.")
+				bot.sendMessage(message, "Logging is already **disabled**.")
 			}
 		}
 
