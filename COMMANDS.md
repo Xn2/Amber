@@ -15,6 +15,9 @@ Sends a random nsfw image from obutts.ru | ~3000 images in total.
 ### !copy
 Copies all messages of a single user untill you type use !stopcopy.
 
+### !avatar (@Member)
+Displays either someone's full size avatar or yours.
+
 ### !kick @Member
 **[Owner only]** Kicks the specified member from the current server (the bot needs a role with permission to kick)
 
