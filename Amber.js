@@ -72,7 +72,7 @@ bot.on("message", function (message, server)
 	if (message.channel.isPrivate === false)
 	{
 		//Split message btw command name and arguments
-		var msplit = message.content.split(" ")
+		var msplit = message.content.split(" ");
 
 		//!copy variable set to false
 		hascopied = false;
@@ -103,12 +103,12 @@ bot.on("message", function (message, server)
   					});
 				});
 
-				bot.sendMessage(message, "Logging has been **enabled**, a restart is needed for the changes to take effect.")
+				bot.sendMessage(message, "Logging has been **enabled**, a restart is needed for the changes to take effect.");
 			}
 
 			else
 			{
-				bot.sendMessage(message, "Logging is already **enabled**.")
+				bot.sendMessage(message, "Logging is already **enabled**.");
 			}
 		}
 
@@ -128,12 +128,12 @@ bot.on("message", function (message, server)
   					});
 				});		
 
-				bot.sendMessage(message, "Logging has been **disabled**, a restart is needed for the changes to take effect.")
+				bot.sendMessage(message, "Logging has been **disabled**, a restart is needed for the changes to take effect.");
 			}
 
 			else
 			{
-				bot.sendMessage(message, "Logging is already **disabled**.")
+				bot.sendMessage(message, "Logging is already **disabled**.");
 			}
 		}
 
@@ -153,12 +153,12 @@ bot.on("message", function (message, server)
   					});
 				});
 
-				bot.sendMessage(message, "Nsfw commands have been **enabled**, a restart is needed for the changes to take effect.")
+				bot.sendMessage(message, "Nsfw commands have been **enabled**, a restart is needed for the changes to take effect.");
 			}
 
 			else
 			{
-				bot.sendMessage(message, "Nsfw commands are already **enabled**.")
+				bot.sendMessage(message, "Nsfw commands are already **enabled**.");
 			}
 		}
 
@@ -178,12 +178,28 @@ bot.on("message", function (message, server)
   					});
 				});		
 
-				bot.sendMessage(message, "Nsfw commands have been **disabled**, a restart is needed for the changes to take effect.")
+				bot.sendMessage(message, "Nsfw commands have been **disabled**, a restart is needed for the changes to take effect.");
 			}
 
 			else
 			{
-				bot.sendMessage(message, "Nsfw commands are already **disabled**.")
+				bot.sendMessage(message, "Nsfw commands are already **disabled**.");
+			}
+		}
+
+		//!setgame command
+		if (msplit[0] === "!setgame" && message.author.id === AuthDetails.ownerid)
+		{
+			if (message.content.indexOf(' ') === -1) 
+			{
+				bot.sendMessage(message, "Usage : `!setgame Game`");
+			}
+
+			if (message.content.indexOf(' ') !== -1) 
+			{
+				var game = message.content
+				game = game.substring('!setgame '.length);
+				bot.setPlayingGame(game);
 			}
 		}
 
@@ -200,7 +216,7 @@ bot.on("message", function (message, server)
 
 			if (m.content.indexOf(' ') === -1) 
 			{
-				bot.sendMessage(message, "You must mention a user.")
+				bot.sendMessage(message, "You must mention a user.");
 			}				
 		}
 
@@ -217,7 +233,7 @@ bot.on("message", function (message, server)
 
 			if (m.content.indexOf(' ') === -1) 
 			{
-				bot.sendMessage(message, "You must mention a user.")
+				bot.sendMessage(message, "You must mention a user.");
 			}
 		}
 
@@ -233,7 +249,7 @@ bot.on("message", function (message, server)
 
 			if (message.content.indexOf(' ') === -1)
 			{
-				bot.sendFile(message, message.author.avatarURL)
+				bot.sendFile(message, message.author.avatarURL);
 			}
 
 

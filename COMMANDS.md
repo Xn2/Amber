@@ -18,6 +18,9 @@ Copies all messages of a single user untill you type use !stopcopy.
 ### !avatar (@Member)
 Displays either someone's full size avatar or yours.
 
+### !setgame
+Sets the current game to the one you specified
+
 ### !kick @Member
 **[Owner only]** Kicks the specified member from the current server (the bot needs a role with permission to kick)
 
