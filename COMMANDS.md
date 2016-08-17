@@ -1,4 +1,4 @@
-# Commands in version **0.1.2 Alpha**
+# Commands in version **0.1.3 Alpha**
 
 ### !help
 Displays help on the bot via PM.

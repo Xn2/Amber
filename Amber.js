@@ -199,7 +199,7 @@ bot.on("message", function (message)
 		{
 			if (AuthDetails.nsfwenable === "0")
 			{
-				bot.sendMessage(message, "Not safe for work commands are not enabled, edit `auth.json` to enable them");
+				bot.sendMessage(message, "Not safe for work commands are not enabled, use `!enablensfw` to enable them");
 			}
 
 			if (AuthDetails.nsfwenable === "1")
@@ -213,7 +213,7 @@ bot.on("message", function (message)
 		{
 			if (AuthDetails.nsfwenable === "0")
 			{
-				bot.sendMessage(message, "Not safe for work commands are not enabled, edit `auth.json` to enable them");
+				bot.sendMessage(message, "Not safe for work commands are not enabled, use `!enablensfw` to enable them");
 			}
 
 			if (AuthDetails.nsfwenable === "1")
@@ -277,7 +277,7 @@ bot.on("message", function (message)
 			bot.sendMessage(message, "Bye Daddy...");
 			log.info("!disconnect command recieved, terminating...");
 			setTimeout(function() {
-    			console.log('Blah blah blah blah extra-blah');
+    			process.exit();
 			}, 5000);
 		}
 
