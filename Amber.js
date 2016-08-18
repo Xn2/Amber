@@ -214,7 +214,7 @@ bot.on("message", function (message, server)
           	  	}
 			}
 
-			if (m.content.indexOf(' ') === -1) 
+			if (message.content.indexOf(' ') === -1) 
 			{
 				bot.sendMessage(message, "You must mention a user.");
 			}				
@@ -231,7 +231,7 @@ bot.on("message", function (message, server)
           	  	}
 			}
 
-			if (m.content.indexOf(' ') === -1) 
+			if (message.content.indexOf(' ') === -1) 
 			{
 				bot.sendMessage(message, "You must mention a user.");
 			}
