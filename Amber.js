@@ -103,7 +103,7 @@ bot.on("message", function (message, server)
   					});
 				});
 
-				bot.sendMessage(message, "Logging has been **enabled**, a restart is needed for the changes to take effect.");
+				bot.sendMessage(message, "Logging has been **enabled**, the bot will now restart.");
 			}
 
 			else
@@ -128,7 +128,7 @@ bot.on("message", function (message, server)
   					});
 				});		
 
-				bot.sendMessage(message, "Logging has been **disabled**, a restart is needed for the changes to take effect.");
+				bot.sendMessage(message, "Logging has been **disabled**, the bot will now restart.");
 			}
 
 			else
@@ -153,7 +153,7 @@ bot.on("message", function (message, server)
   					});
 				});
 
-				bot.sendMessage(message, "Nsfw commands have been **enabled**, a restart is needed for the changes to take effect.");
+				bot.sendMessage(message, "Nsfw commands have been **enabled**, the bot will now restart.");
 			}
 
 			else
@@ -178,7 +178,7 @@ bot.on("message", function (message, server)
   					});
 				});		
 
-				bot.sendMessage(message, "Nsfw commands have been **disabled**, a restart is needed for the changes to take effect.");
+				bot.sendMessage(message, "Nsfw commands have been **disabled**, the bot will now restart.");
 			}
 
 			else
