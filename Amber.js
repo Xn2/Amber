@@ -203,6 +203,51 @@ bot.on("message", function (message, server)
 			}
 		}
 
+		//!createchannel
+		if (msplit[0] === "!createchannel")
+		{
+			if (message.author.id === AuthDetails.ownerid)
+			{
+				if (message.content.indexOf(' ') !== -1) 
+				{
+					var channelname = msplit[1];
+					bot.createChannel(message.channel.server.id, channelname);
+				}
+				else
+				{
+					bot.sendMessage(message, "Usage : `!createchannel chanel_name (spaces are not allowed)`");
+				}
+			}
+			else
+			{
+				bot.sendMessage(message, "You're not allowed to do that.");
+			}
+		}
+
+		//!deletechannel command
+		if (msplit[0] === "!deletechannel")
+		{
+			if (message.author.id === AuthDetails.ownerid)
+			{
+				if (message.content.indexOf(' ') !== -1) 
+				{
+					var channelname = msplit[1];
+					var channelname = channelname.substring('<#'.length);
+					var channelname = channelname.slice(0, -1);
+					bot.sendMessage(message, channelname)
+					bot.deleteChannel(channelname);
+				}
+				else
+				{
+					bot.sendMessage(message, "Usage : `!deletechannel #chanel_name`");
+				}
+			}
+			else
+			{
+				bot.sendMessage(message, "You're not allowed to do that.");
+			}
+		}
+
 		//!kick command
 		if (msplit[0] === "!kick" && message.author.id === AuthDetails.ownerid) 
 		{
@@ -210,7 +255,12 @@ bot.on("message", function (message, server)
 			{
             	for (var user of message.mentions) 
             	{
+
+    				bot.sendMessage(user.id, "You have been kicked from the server " + message.channel.server.name + " by " + message.author.name + ".")
+
+            		setTimeout(function() {
                		bot.kickMember(user.id, message.channel.server.id);
+					}, 5000);
           	  	}
 			}
 
@@ -227,7 +277,11 @@ bot.on("message", function (message, server)
 			{
             	for (var user of message.mentions) 
             	{
+            		bot.sendMessage(user.id, "You have been permanently banned from the server " + message.channel.server.name + " by " + message.author.name + ".")
+
+               		setTimeout(function() {
                		bot.banMember(user.id, message.channel.server.id);
+					}, 5000);
           	  	}
 			}
 
@@ -251,8 +305,6 @@ bot.on("message", function (message, server)
 			{
 				bot.sendFile(message, message.author.avatarURL);
 			}
-
-
 		}
 
 		//!help command for public channels

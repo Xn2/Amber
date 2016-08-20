@@ -19,25 +19,31 @@ Copies all messages of a single user untill you type use !stopcopy.
 Displays either someone's full size avatar or yours.
 
 ### !setgame
-Sets the current game to the one you specified
+Sets the current game to the one you specified.
+
+### !createchannel channel_name
+Creates a text channel of the name of your choice.
+
+###!deletechannel #channel_name
+Deletes an existing text channel.		
 
 ### !kick @Member
-**[Owner only]** Kicks the specified member from the current server (the bot needs a role with permission to kick)
+**[Owner only]** Kicks the specified member from the current server (the bot needs a role with permission to kick).
 
 ### !ban @Member
 **[Owner only]** Bans the specified member from the current server (the bot needs a role with permission to ban)
 
 ### !enablelogging
-**[Owner only]** Enables chat logging (needs a restart)
+**[Owner only]** Enables chat logging (needs a restart).
 
 ### !disablelogging
-**[Owner only]** Disables chat logging (needs a restart)
+**[Owner only]** Disables chat logging (needs a restart).
 
 ### !enablensfw
-**[Owner only]** Enables NSFW commands (needs a restart)
+**[Owner only]** Enables NSFW commands (needs a restart).
 
 ### !disablensfw
-**[Owner only]** Disables NSFW commands (needs a restart)
+**[Owner only]** Disables NSFW commands (needs a restart).
 
 ### !disconnect
 **[Owner only]** Kills the bot.
