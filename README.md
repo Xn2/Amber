@@ -10,7 +10,7 @@ Amber is a small chat bot made for Discord written in NodeJS using discord.js.
 
 - Use `cd Amber` to switch to Amber's directory.
 
-- Use `npm install` to install all the dependencies required boy the bot.
+- Use `npm install -g` to install all the dependencies required by the bot.
 
 - Rename `config.json.example` into `config.json` and put your credientals.
 
