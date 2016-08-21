@@ -15,6 +15,11 @@ var log = require("simple-node-logger").createSimpleLogger("./amber.log");
 
 var fs = require('fs')
 var http = require('http');
+var https = require('https');
+var file = fs.createWriteStream("versionchecker.json");
+var request = https.get("https://cdn.rawgit.com/Xn2/Amber/master/version.json", function(response) {
+response.pipe(file);
+});
 
 try {
 var Discord = require ("discord.js");
@@ -91,10 +96,22 @@ bot.on("message", function (message, server)
 		//!checkupdates command
 		if (message.content === "!checkupdates")
 		{
-			var file = fs.createWriteStream("version.txt");
-			var request = http.get("http://i3.ytimg.com/vi/J---aiyznGQ/mqdefault.jpg", function(response) {
-  			response.pipe(file);
-			});
+			var Versionchecker = require("./versionchecker.json")
+
+			if (Version.versionraw === Versionchecker.versionraw)
+			{
+				bot.sendMessage(message, "I'm up to date!");
+			}
+
+			if (Version.versionraw < Versionchecker.versionraw)
+			{
+				bot.sendMessage(message, "An update is available! Use `git pull` from the command line to update!");
+			}
+
+			if (Version.versionraw > Versionchecker.versionraw)
+			{
+				bot.sendMessage(message, "Woa, I'm running under a version that is not out yet!");
+			}
 		}
 
 		//!enablelogging command
