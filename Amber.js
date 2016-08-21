@@ -16,10 +16,12 @@ var log = require("simple-node-logger").createSimpleLogger("./amber.log");
 var fs = require('fs')
 var http = require('http');
 var https = require('https');
+/*
 var file = fs.createWriteStream("versionchecker.json");
 var request = https.get("https://cdn.rawgit.com/Xn2/Amber/master/version.json", function(response) {
 response.pipe(file);
 });
+*/
 
 try {
 var Discord = require ("discord.js");
@@ -93,7 +95,7 @@ bot.on("message", function (message, server)
 			log.info(message.author.name + "#" + message.author.discriminator + "@#" + message.channel.name + " on " + message.server.name + " : " + message.content);
 		}	
 
-		//!checkupdates command
+		/*checkupdates command
 		if (message.content === "!checkupdates")
 		{
 			var Versionchecker = require("./versionchecker.json")
@@ -112,7 +114,7 @@ bot.on("message", function (message, server)
 			{
 				bot.sendMessage(message, "Woa, I'm running under a version that is not out yet!");
 			}
-		}
+		}*/
 
 		//!enablelogging command
 		if (message.content === "!enablelogging" && message.author.id === AuthDetails.ownerid)
