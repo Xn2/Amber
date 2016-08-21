@@ -14,6 +14,7 @@ var log = require("simple-node-logger").createSimpleLogger("./amber.log");
 }
 
 var fs = require('fs')
+var http = require('http');
 
 try {
 var Discord = require ("discord.js");
@@ -86,6 +87,15 @@ bot.on("message", function (message, server)
 		{
 			log.info(message.author.name + "#" + message.author.discriminator + "@#" + message.channel.name + " on " + message.server.name + " : " + message.content);
 		}	
+
+		//!checkupdates command
+		if (message.content === "!checkupdates")
+		{
+			var file = fs.createWriteStream("version.txt");
+			var request = http.get("http://i3.ytimg.com/vi/J---aiyznGQ/mqdefault.jpg", function(response) {
+  			response.pipe(file);
+			});
+		}
 
 		//!enablelogging command
 		if (message.content === "!enablelogging" && message.author.id === AuthDetails.ownerid)
@@ -203,7 +213,7 @@ bot.on("message", function (message, server)
 			}
 		}
 
-		//!createchannel
+		//!createchannel command
 		if (msplit[0] === "!createchannel")
 		{
 			if (message.author.id === AuthDetails.ownerid)
