@@ -1,4 +1,4 @@
-# Commands in version **0.1.4 Alpha**
+# Commands in version **0.1.5 Alpha**
 
 ### !help
 Displays help on the bot via PM.
@@ -34,16 +34,16 @@ Deletes an existing text channel.
 **[Owner only]** Bans the specified member from the current server (the bot needs a role with permission to ban)
 
 ### !enablelogging
-**[Owner only]** Enables chat logging (needs a restart).
+**[Owner only]** Enables chat logging.
 
 ### !disablelogging
-**[Owner only]** Disables chat logging (needs a restart).
+**[Owner only]** Disables chat logging.
 
 ### !enablensfw
-**[Owner only]** Enables NSFW commands (needs a restart).
+**[Owner only]** Enables NSFW commands.
 
 ### !disablensfw
-**[Owner only]** Disables NSFW commands (needs a restart).
+**[Owner only]** Disables NSFW commands.
 
 ### !disconnect
 **[Owner only]** Kills the bot.
