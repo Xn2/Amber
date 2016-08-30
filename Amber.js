@@ -56,6 +56,8 @@ try {
 	process.exit();
 }
 
+var util = require("util");
+
 //!copy variables stuff
 var iscopying = false;
 var usercopying = "None";
@@ -257,20 +259,39 @@ bot.on("message", function (message, server)
 				var link = message.content;
 				link = link.substring('!setavatar '.length);
 				var fileavatar = fs.createWriteStream("avatar.png");
+				var base64data;
 				if (link.startsWith("https"))
 				{
-					var requestavatar = https.get(link, function(response) {
-  					response.pipe(file);
+					var bitmap;
+					var request = https.get(link, function(response) {
+  					response.pipe(fileavatar);
 					});
+            		setTimeout(function() {
+						var dataUri = ("./avatar.png");
+    					var data = fs.readFileSync(dataUri).toString("base64");
+    					console.log(data);
+    					bot.sendMessage(message, data);
+						bot.setAvatar("data:image/png;base64," + data);
+					}, 5000);
+				}
+				else if (link.startsWith("http:"))
+				{
+					var bitmap;
+					var request = http.get(link, function(response) {
+  					response.pipe(fileavatar);
+					});
+            		setTimeout(function() {
+						var dataUri = ("./avatar.png");
+    					var data = fs.readFileSync(dataUri).toString("base64");
+    					console.log(data);
+    					bot.sendMessage(message, data);
+						bot.setAvatar("data:image/png;base64," + data);
+					}, 5000);
 				}
 				else
 				{
-					var request = https.get(link, function(response) {
-  					response.pipe(file);
-					});
+					bot.sendMessage(message, "Please provide a valid http or https link.")
 				}
-				bot.setAvatar("./avatar.png");
-				bot.sendMessage(message, "Avatar changed to " + link);
 			}
 		}
 
