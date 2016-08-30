@@ -444,7 +444,7 @@ bot.on("message", function (message, server)
 
 			if (AuthDetails.nsfwenable === "1")
 			{
-				Danbooru.search('rating:r', function(err, data) {
+				Danbooru.search('rating:explicit', function(err, data) {
  				data.random()
       			.get()
       			.pipe(require('fs').createWriteStream('./random.jpg'));
