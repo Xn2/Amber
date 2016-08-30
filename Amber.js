@@ -241,6 +241,7 @@ bot.on("message", function (message, server)
 				{
 					var channelname = msplit[1];
 					bot.createChannel(message.channel.server.id, channelname);
+					bot.sendMessage(message, "Channel #" + channelname + " created.")
 				}
 				else
 				{
@@ -263,7 +264,7 @@ bot.on("message", function (message, server)
 					var channelname = msplit[1];
 					var channelname = channelname.substring('<#'.length);
 					var channelname = channelname.slice(0, -1);
-					bot.sendMessage(message, channelname)
+					bot.sendMessage(message, "Channel deleted.")
 					bot.deleteChannel(channelname);
 				}
 				else
