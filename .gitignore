@@ -44,3 +44,6 @@ amber.log
 
 # Node modules dir
 node_modules
+
+# Avatar image
+avatar.png
