@@ -9,7 +9,8 @@
     "discord.js": "^8.1.0",
     "node-base64-image": "^1.0.1",
     "nodemon": "^1.10.2",
-    "simple-node-logger": "^0.93.12"
+    "simple-node-logger": "^0.93.12",
+    "danbooru" : "^1.4.8"
   },
   "devDependencies": {},
   "scripts": {

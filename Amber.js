@@ -16,12 +16,10 @@ var log = require("simple-node-logger").createSimpleLogger("./amber.log");
 var fs = require('fs')
 var http = require('http');
 var https = require('https');
-
 var file = fs.createWriteStream("versionchecker.json");
 var request = https.get("https://cdn.rawgit.com/Xn2/Amber/master/version.json", function(response) {
 response.pipe(file);
 });
-
 
 try {
 var Discord = require ("discord.js");
@@ -48,6 +46,13 @@ try {
 	var base64 = require('node-base64-image');
 } catch (e){
 	console.log("AmberBot requires node-base64-image, and it's missing, please execute npm install node-base64-image".red);
+	process.exit();
+}
+
+try {
+	var Danbooru = require('danbooru');
+} catch (e){
+	console.log("AmberBot requires danbooru, and it's missing, please execute npm install danbooru".red);
 	process.exit();
 }
 
@@ -426,6 +431,27 @@ bot.on("message", function (message, server)
 			{
 				var picid = Math.floor(Math.random() * 3850) + 1000;
 				bot.sendMessage(message, "http://media.obutts.ru/butts_preview/0" + picid + ".jpg");
+			}
+		}
+
+		//!rdmhentai command
+		if (message.content === "!rdmhentai")
+		{
+			if (AuthDetails.nsfwenable === "0")
+			{
+				bot.sendMessage(message, "Not safe for work commands are not enabled, use `!enablensfw` to enable them");
+			}
+
+			if (AuthDetails.nsfwenable === "1")
+			{
+				Danbooru.search('rating:r order:rank', function(err, data) {
+ 				data.random()
+      			.get()
+      			.pipe(require('fs').createWriteStream('./random.jpg'));
+				});
+				setTimeout(function() {
+      			bot.sendFile(message, "./random.jpg")
+      			}, 1000);
 			}
 		}
 

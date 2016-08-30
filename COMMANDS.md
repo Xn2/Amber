@@ -1,4 +1,4 @@
-# Commands in version **0.1.5 Alpha**
+# Commands in version **0.1.6 Alpha**
 
 ### !help
 Displays help on the bot via PM.
@@ -11,6 +11,9 @@ Sends a random nsfw image from oboobs.ru | ~10000 images in total.
 
 ### !rdmass
 Sends a random nsfw image from obutts.ru | ~3000 images in total.
+
+###!rdmhentai
+Sends a random nsfw image from danbooru | **VERY EXPERIMENTAL**
 
 ### !copy
 Copies all messages of a single user untill you type use !stopcopy.
