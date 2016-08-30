@@ -16,12 +16,12 @@ var log = require("simple-node-logger").createSimpleLogger("./amber.log");
 var fs = require('fs')
 var http = require('http');
 var https = require('https');
-/*
+
 var file = fs.createWriteStream("versionchecker.json");
 var request = https.get("https://cdn.rawgit.com/Xn2/Amber/master/version.json", function(response) {
 response.pipe(file);
 });
-*/
+
 
 try {
 var Discord = require ("discord.js");
@@ -41,6 +41,13 @@ try {
 	var Version = require("./version.json");
 } catch (e){
 	console.log("version.json is missing or incorrect!".red);
+	process.exit();
+}
+
+try {
+	var base64 = require('node-base64-image');
+} catch (e){
+	console.log("AmberBot requires node-base64-image, and it's missing, please execute npm install node-base64-image".red);
 	process.exit();
 }
 
@@ -95,7 +102,7 @@ bot.on("message", function (message, server)
 			log.info(message.author.name + "#" + message.author.discriminator + "@#" + message.channel.name + " on " + message.server.name + " : " + message.content);
 		}	
 
-		/*checkupdates command
+		//checkupdates command
 		if (message.content === "!checkupdates")
 		{
 			var Versionchecker = require("./versionchecker.json")
@@ -114,7 +121,7 @@ bot.on("message", function (message, server)
 			{
 				bot.sendMessage(message, "Woa, I'm running under a version that is not out yet!");
 			}
-		}*/
+		}
 
 		//!enablelogging command
 		if (message.content === "!enablelogging" && message.author.id === AuthDetails.ownerid)
@@ -226,9 +233,39 @@ bot.on("message", function (message, server)
 
 			if (message.content.indexOf(' ') !== -1) 
 			{
-				var game = message.content
+				var game = message.content;
 				game = game.substring('!setgame '.length);
 				bot.setPlayingGame(game);
+			}
+		}
+
+		//!setavatar command
+		if (msplit[0] === "!setavatar" && message.author.id === AuthDetails.ownerid)
+		{
+			if (message.content.indexOf(' ') === -1) 
+			{
+				bot.sendMessage(message, "Usage : `!setavatar http://link.tld/image.png`");
+			}
+
+			if (message.content.indexOf(' ') !== -1)
+			{
+				var link = message.content;
+				link = link.substring('!setavatar '.length);
+				var fileavatar = fs.createWriteStream("avatar.png");
+				if (link.startsWith("https"))
+				{
+					var requestavatar = https.get(link, function(response) {
+  					response.pipe(file);
+					});
+				}
+				else
+				{
+					var request = https.get(link, function(response) {
+  					response.pipe(file);
+					});
+				}
+				bot.setAvatar("./avatar.png");
+				bot.sendMessage(message, "Avatar changed to " + link);
 			}
 		}
 
