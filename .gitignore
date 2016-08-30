@@ -47,3 +47,6 @@ node_modules
 
 # Avatar image
 avatar.png
+
+# Version checker
+versionchecker.json
