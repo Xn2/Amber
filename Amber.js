@@ -269,9 +269,8 @@ bot.on("message", function (message, server)
             		setTimeout(function() {
 						var dataUri = ("./avatar.png");
     					var data = fs.readFileSync(dataUri).toString("base64");
-    					console.log(data);
-    					bot.sendMessage(message, data);
 						bot.setAvatar("data:image/png;base64," + data);
+						bot.sendMessage(message, "New avatar set.")
 					}, 5000);
 				}
 				else if (link.startsWith("http:"))
@@ -283,9 +282,8 @@ bot.on("message", function (message, server)
             		setTimeout(function() {
 						var dataUri = ("./avatar.png");
     					var data = fs.readFileSync(dataUri).toString("base64");
-    					console.log(data);
-    					bot.sendMessage(message, data);
 						bot.setAvatar("data:image/png;base64," + data);
+						bot.sendMessage(message, "New avatar set.")
 					}, 5000);
 				}
 				else

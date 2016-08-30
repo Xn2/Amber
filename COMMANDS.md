@@ -21,14 +21,17 @@ Copies all messages of a single user untill you type use !stopcopy.
 ### !avatar (@Member)
 Displays either someone's full size avatar or yours.
 
+### !setavatar
+**[Owner only]** Sets a new avatar from a given image link.
+
 ### !setgame
-Sets the current game to the one you specified.
+**[Owner only]** Sets the current game to the one you specified.
 
 ### !createchannel channel_name
-Creates a text channel of the name of your choice.
+**[Owner only]** Creates a text channel of the name of your choice.
 
 ###!deletechannel #channel_name
-Deletes an existing text channel.		
+**[Owner only]** Deletes an existing text channel.		
 
 ### !kick @Member
 **[Owner only]** Kicks the specified member from the current server (the bot needs a role with permission to kick).
