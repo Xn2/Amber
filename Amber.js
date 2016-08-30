@@ -451,7 +451,7 @@ bot.on("message", function (message, server)
 				});
 				setTimeout(function() {
       			bot.sendFile(message, "./random.jpg")
-      			}, 1000);
+      			}, 2000);
 			}
 		}
 
