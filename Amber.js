@@ -306,9 +306,8 @@ bot.on("message", function (message, server)
 				var newname = message.content;
 				newname = newname.substring("!setname ".length);
 				bot.setUsername(newname);
-				bot.sendMessage(message, "Changed my username to " + newname + ".")	
+				bot.sendMessage(message, "Changed my username to " + newname + " for the current session.")	
 			}
-
 		}
 
 		//!createchannel command
