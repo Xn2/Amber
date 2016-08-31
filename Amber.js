@@ -293,6 +293,24 @@ bot.on("message", function (message, server)
 			}
 		}
 
+		//!setname command
+		if (msplit[0] === "!setname" && message.author.id === AuthDetails.ownerid)
+		{
+			if (message.content.indexOf(' ') === -1)
+			{
+				bot.sendMessage(message, "Usage : `!setname name`")
+			}
+
+			if (message.content.indexOf(' ') !== -1)
+			{
+				var newname = message.content;
+				newname = newname.substring("!setname ".length);
+				bot.setUsername(newname);
+				bot.sendMessage(message, "Changed my username to " + newname + ".")	
+			}
+
+		}
+
 		//!createchannel command
 		if (msplit[0] === "!createchannel")
 		{
