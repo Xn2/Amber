@@ -362,6 +362,7 @@ bot.on("message", function (message, server)
 		{
 			if (message.author.id === AuthDetails.ownerid)
 			{
+				var newtopic = message.content
 				var newtopic = newtopic.substring("!settopic ".length);
 				message.channel.settopic(newtopic)
 			}
