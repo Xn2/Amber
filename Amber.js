@@ -364,7 +364,7 @@ bot.on("message", function (message, server)
 			{
 				var newtopic = message.content
 				var newtopic = newtopic.substring("!settopic ".length);
-				message.channel.settopic(newtopic)
+				bot.setTopic(message.channel, newtopic)
 			}
 		}
 
