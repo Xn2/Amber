@@ -70,6 +70,7 @@ var bot = new Discord.Client();
 //Login process either with token or email/pass
 if (AuthDetails.officialbot === "0")
 {
+
 	bot.login(AuthDetails.email, AuthDetails.password);
 }
 if (AuthDetails.officialbot === "1")
@@ -353,6 +354,16 @@ bot.on("message", function (message, server)
 			else
 			{
 				bot.sendMessage(message, "You're not allowed to do that.");
+			}
+		}
+
+		//settopic command
+		if (msplit[0] === "!settopic")
+		{
+			if (message.author.id === AuthDetails.ownerid)
+			{
+				var newtopic = newtopic.substring("!settopic ".length);
+				message.channel.settopic(newtopic)
 			}
 		}
 
