@@ -378,8 +378,8 @@ bot.on("message", function (message, server)
 			else
 			{
 				var channel = msplit[1];
-				var channel = channelname.substring('<#'.length);
-				var channel = channelname.slice(0, -1);
+				var channel = channel.substring('<#'.length);
+				var channel = channel.slice(0, -1);
 				var message = message.content;
 				var message = message.subsring(msplit[0].length);
 				var message = message.subsring(msplit[1].length);
