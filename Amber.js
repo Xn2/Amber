@@ -380,10 +380,10 @@ bot.on("message", function (message, server)
 				var channel = msplit[1];
 				var channel = channel.substring('<#'.length);
 				var channel = channel.slice(0, -1);
-				var message = message.content;
-				var message = message.subsring(msplit[0].length);
-				var message = message.subsring(msplit[1].length);
-				bot.sendMessage(channel, message)
+				var texttosay = message.content;
+				var texttosay = message.subsring(msplit[0].length);
+				var texttosay = message.subsring(msplit[1].length);
+				bot.sendMessage(channel, texttosay)
 			}
 		}
 
