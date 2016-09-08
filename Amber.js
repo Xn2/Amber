@@ -381,8 +381,8 @@ bot.on("message", function (message, server)
 				var channel = channel.substring('<#'.length);
 				var channel = channel.slice(0, -1);
 				var texttosay = message.content;
-				var texttosay = message.subsring(msplit[0].length);
-				var texttosay = message.subsring(msplit[1].length);
+				var texttosay = texttosay.substring(msplit[0].length);
+				var texttosay = texttosay.substring(msplit[1].length);
 				bot.sendMessage(channel, texttosay)
 			}
 		}
