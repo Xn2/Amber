@@ -75,7 +75,7 @@ if (AuthDetails.officialbot === "0")
 }
 if (AuthDetails.officialbot === "1")
 {
-	bot.loginWithToken(AuthDetails.token);
+	bot.loginWithToken("Bot " + AuthDetails.token);
 }
 
 //What the bot does when it's ready
