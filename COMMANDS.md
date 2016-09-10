@@ -1,4 +1,4 @@
-# Commands in version **0.1.6 Alpha**
+# Commands in version **0.1.7 Alpha**
 
 ### !help
 Displays help on the bot via PM.
@@ -14,6 +14,9 @@ Sends a random nsfw image from obutts.ru | ~3000 images in total.
 
 ###!rdmhentai
 Sends a random nsfw image from danbooru | **VERY EXPERIMENTAL**
+
+### !tweet
+Tweets something for you 
 
 ### !copy
 Copies all messages of a single user untill you type use !stopcopy.
@@ -50,6 +53,12 @@ Displays either someone's full size avatar or yours.
 
 ### !disablensfw
 **[Owner only]** Disables NSFW commands.
+
+### !enabletwitter
+**[Owner only]** Enables Twitter commands.
+
+### !disabletwitter
+**[Owner only]** Disables Twitter commands.
 
 ### !disconnect
 **[Owner only]** Kills the bot.

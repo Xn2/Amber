@@ -1,4 +1,5 @@
 {
+	"==============" : "Basic info ============================================"
 	"officialbot" : "if your bot is an official bot account, type 1, if it is a regular one, put 0",
 	"token" : "your bot's login token (only for official bot accounts)",
 	"email" : "your bot's email (only for regular accounts)",
@@ -7,6 +8,12 @@
 	"botname" : "the name of your bot",
 	"invitelink" : "(optional) your bot's invite link if you have an official bot account",
 	"logchannelid" : "(optional) a channelID where logs will be sent",
+	"==============" : "Modules ==============================================="
 	"nsfwenable" : "0"
 	"logenable" : "1"
+	"==============" : "Twitter stuff ========================================="
+	"twitterconsumerkey" : "(optional) your twitter consumer API key",
+	"twitterconsumersecret" : "(optional) your twitter consumer API secret",
+	"twitteraccesstoken" : "(optional) your twitter access token",
+	"twitteraccesstokensecret" : "(optional) your twitter access secret token"
 }

@@ -36,6 +36,13 @@ try {
 }
 
 try {
+	var Twitter = require("twitter");
+} catch (e){
+	console.log("AmberBot requires twitter, and it's missing, please execute npm install twitter".red);
+	process.exit();
+}
+
+try {
 	var Version = require("./version.json");
 } catch (e){
 	console.log("version.json is missing or incorrect!".red);
@@ -70,7 +77,6 @@ var bot = new Discord.Client();
 //Login process either with token or email/pass
 if (AuthDetails.officialbot === "0")
 {
-
 	bot.login(AuthDetails.email, AuthDetails.password);
 }
 if (AuthDetails.officialbot === "1")
@@ -81,7 +87,7 @@ if (AuthDetails.officialbot === "1")
 //What the bot does when it's ready
 bot.on("ready", function (message)
 {
-bot.setUsername(AuthDetails.botname)
+bot.setUsername(AuthDetails.botname);	
 console.log("");
 console.log(AuthDetails.botname.green + " " + Version.version.green + " is online and ready to rock!".green);
 console.log("");
@@ -228,6 +234,56 @@ bot.on("message", function (message, server)
 			else
 			{
 				bot.sendMessage(message, "Nsfw commands are already **disabled**.");
+			}
+		}
+
+	    //!enabletwitter command
+		if (message.content === "!enabletwitter" && message.author.id === AuthDetails.ownerid)
+		{
+			if (AuthDetails.twitterenable === "0")
+			{
+				fs.readFile("config.json", 'utf8', function (err,data) {
+  					if (err) {
+    				return console.log(err);
+  					}
+  				var result = data.replace("\"twitterenable\" : \"0\"", "\"twitterenable\" : \"1\"");
+	
+  				fs.writeFile("config.json", result, 'utf8', function (err) {
+     			if (err) return console.log(err);
+  					});
+				});
+
+				bot.sendMessage(message, "Twitter commands have been **enabled**, the bot will now restart.");
+			}
+
+			else
+			{
+				bot.sendMessage(message, "Twitter commands are already **enabled**.");
+			}
+		}
+
+		//!disabletwitter command
+		if (message.content === "!disabletwitter" && message.author.id === AuthDetails.ownerid)
+		{
+			if (AuthDetails.twitterenable === "1")
+			{
+				fs.readFile("config.json", 'utf8', function (err,data) {
+  				if (err) {
+    			return console.log(err);
+  				}
+  				var result = data.replace("\"twitterenable\" : \"1\"", "\"twitterenable\" : \"0\"");
+
+  				fs.writeFile("config.json", result, 'utf8', function (err) {
+	     		if (err) return console.log(err);
+  					});
+				});		
+
+				bot.sendMessage(message, "Twitter commands have been **disabled**, the bot will now restart.");
+			}
+
+			else
+			{
+				bot.sendMessage(message, "Twitter commands are already **disabled**.");
 			}
 		}
 
@@ -545,6 +601,42 @@ bot.on("message", function (message, server)
 			{
 				iscopying = false;
 				bot.sendMessage(message, "Stopped copying " + message.author.name + "'s messages.");
+			}
+		}
+
+		//!tweet command
+		if (msplit[0] === "!tweet" && message.author.id === AuthDetails.ownerid)
+		{
+			if (message.content.indexOf(' ') === -1)
+			{
+				bot.sendMessage(message, "Usage : `!tweet sometext`");
+			}
+
+			if (message.content.indexOf(' ') !== -1)
+			{
+				if (AuthDetails.twitterenable === "1")
+				{
+					var client = new Twitter({
+ 	 				consumer_key: AuthDetails.twitterconsumerkey,
+ 	 				consumer_secret: AuthDetails.twitterconsumersecret,
+ 	 				access_token_key: AuthDetails.twitteraccesstoken,
+ 	 				access_token_secret: AuthDetails.twitteraccesstokensecret
+				});
+
+				tweetcontent = message.content;
+				tweetcontent = tweetcontent.substring("!tweet ".length);
+
+				client.post('statuses/update', {status: tweetcontent},  function(error, tweet, response) {
+  				if(error) throw error;
+				});
+
+				bot.sendMessage(message, "I did tweet " + tweetcontent + " for you :heart:")
+				}
+				
+				else
+				{
+					bot.sendMessage(message, "Twitter commands are not enabled, use `!enabletwitter` to enable them");
+				}
 			}
 		}
 
