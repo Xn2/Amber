@@ -70,8 +70,6 @@ try {
 	process.exit();
 }
 
-var util = require("util");
-
 //!copy variables stuff
 var iscopying = false;
 var usercopying = "None";

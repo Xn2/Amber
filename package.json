@@ -5,12 +5,13 @@
   "main": "amber.js",
   "dependencies": {
     "colors": "^1.1.2",
-    "colours": "^0.6.0-2",
     "discord.js": "^8.1.0",
     "node-base64-image": "^1.0.1",
     "nodemon": "^1.10.2",
     "simple-node-logger": "^0.93.12",
-    "danbooru" : "^1.4.8"
+    "danbooru": "^1.4.8",
+    "twitter" : "^1.4.0",
+    "yourls"  : "^1.0.2"
   },
   "devDependencies": {},
   "scripts": {
@@ -25,5 +26,6 @@
   "bugs": {
     "url": "https://github.com/Xn2/Amber/issues"
   },
-  "homepage": "https://github.com/Xn2/Amber#readme"
+  "homepage": "https://github.com/Xn2/Amber#readme",
+  "keywords": []
 }
