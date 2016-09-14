@@ -16,4 +16,7 @@
 	"twitterconsumersecret" : "(optional) your twitter consumer API secret",
 	"twitteraccesstoken" : "(optional) your twitter access token",
 	"twitteraccesstokensecret" : "(optional) your twitter access secret token"
+	"==============" : "Yourls stuff ==========================================",
+	"yourlsurl" : "Your yourls base url, should be http://link.tld",
+	"yourlsapi" : "Your yourls secret signature token, you can find it at http://link.tld/admin/tools.php"
 }

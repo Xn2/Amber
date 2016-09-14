@@ -12,7 +12,7 @@ Sends a random nsfw image from oboobs.ru | ~10000 images in total.
 ### !rdmass
 Sends a random nsfw image from obutts.ru | ~3000 images in total.
 
-###!rdmhentai
+### !rdmhentai
 Sends a random nsfw image from danbooru | **VERY EXPERIMENTAL**
 
 ### !tweet
@@ -24,6 +24,9 @@ Copies all messages of a single user untill you type use !stopcopy.
 ### !avatar (@Member)
 Displays either someone's full size avatar or yours.
 
+### !shrink
+Shortens a link into a http://s.xn2.fr/xxx format.
+
 ### !setavatar
 **[Owner only]** Sets a new avatar from a given image link.
 
@@ -33,7 +36,7 @@ Displays either someone's full size avatar or yours.
 ### !createchannel channel_name
 **[Owner only]** Creates a text channel of the name of your choice.
 
-###!deletechannel #channel_name
+### !deletechannel #channel_name
 **[Owner only]** Deletes an existing text channel.		
 
 ### !kick @Member

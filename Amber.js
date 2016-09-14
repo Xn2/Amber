@@ -43,6 +43,13 @@ try {
 }
 
 try {
+	var Yourls = require("yourls");
+} catch (e){
+	console.log("AmberBot requires yourls, and it's missing, please execute npm install yourls".red);
+	process.exit();
+}
+
+try {
 	var Version = require("./version.json");
 } catch (e){
 	console.log("version.json is missing or incorrect!".red);
@@ -637,6 +644,28 @@ bot.on("message", function (message, server)
 				{
 					bot.sendMessage(message, "Twitter commands are not enabled, use `!enabletwitter` to enable them");
 				}
+			}
+		}
+
+		//!shrink
+		if (msplit[0] === "!shrink")
+		{
+			if (message.content.indexOf(' ') === -1)
+			{
+				bot.sendMessage(message, "Usage : `!shrink http://link.tld/`");
+			}
+
+			if (message.content.indexOf(' ') !== -1)
+			{
+				link = msplit[1]
+				var yourls = new Yourls(AuthDetails.yourlsurl, AuthDetails.yourlsapi);
+				yourls.shorten(link, function(error, result) {
+				bot.sendMessage(message, "Here's your link : <http://s.xn2.fr/" + result.url.keyword + ">");
+				if (error) {
+				bot.sendMessage(message, "I'm sorry, there was an error.")
+				throw error;
+				}
+				});
 			}
 		}
 
