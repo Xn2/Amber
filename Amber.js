@@ -660,10 +660,27 @@ bot.on("message", function (message, server)
 				yourls.shorten(link, function(error, result) {
 				bot.sendMessage(message, "Here's your link : <http://s.xn2.fr/" + result.url.keyword + ">");
 				if (error) {
-				bot.sendMessage(message, "I'm sorry, there was an error.")
+				bot.sendMessage(message, "I'm sorry, there was an error.");
 				throw error;
 				}
 				});
+			}
+		}
+
+		//!roll command
+		if (msplit[0] === "!roll")
+		{
+			if (message.content.indexOf(' ') === -1)
+			{
+				number = Math.floor(Math.random() * 100) + 1;
+				bot.sendMessage(message, "You rolled " + number + "!");
+			}
+
+			if (message.content.indexOf(' ') !== -1)
+			{
+				x = msplit[1]
+				number = Math.floor(Math.random() * x) + 1;
+				bot.sendMessage(message, "You rolled " + number + "!");
 			}
 		}
 

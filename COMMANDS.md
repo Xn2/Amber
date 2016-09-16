@@ -21,6 +21,9 @@ Tweets something for you
 ### !copy
 Copies all messages of a single user untill you type use !stopcopy.
 
+### !roll (number)
+Picks a random number with a specified maximum (by default 100).
+
 ### !avatar (@Member)
 Displays either someone's full size avatar or yours.
 
