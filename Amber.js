@@ -143,7 +143,7 @@ bot.on("message", function (message, server)
 		}
 
 		//!enablelogging command
-		if (message.content === "!enablelogging" && message.author.id === AuthDetails.ownerid)
+		if (message.content === "!enablelogging" && AuthDetails.ownerid.indexOf(message.author.id) !== -1)
 		{
 			if (AuthDetails.logenable === "0")
 			{
@@ -168,7 +168,7 @@ bot.on("message", function (message, server)
 		}
 
 		//!disablelogging command
-		if (message.content === "!disablelogging" && message.author.id === AuthDetails.ownerid)
+		if (message.content === "!disablelogging" && AuthDetails.ownerid.indexOf(message.author.id) !== -1)
 		{
 			if (AuthDetails.logenable === "1")
 			{
@@ -193,7 +193,7 @@ bot.on("message", function (message, server)
 		}
 
 		//!enablensfw command
-		if (message.content === "!enablensfw" && message.author.id === AuthDetails.ownerid)
+		if (message.content === "!enablensfw" && AuthDetails.ownerid.indexOf(message.author.id) !== -1)
 		{
 			if (AuthDetails.nsfwenable === "0")
 			{
@@ -218,7 +218,7 @@ bot.on("message", function (message, server)
 		}
 
 		//!disablensfw command
-		if (message.content === "!disablensfw" && message.author.id === AuthDetails.ownerid)
+		if (message.content === "!disablensfw" && AuthDetails.ownerid.indexOf(message.author.id) !== -1)
 		{
 			if (AuthDetails.logenable === "1")
 			{
@@ -243,7 +243,7 @@ bot.on("message", function (message, server)
 		}
 
 	    //!enabletwitter command
-		if (message.content === "!enabletwitter" && message.author.id === AuthDetails.ownerid)
+		if (message.content === "!enabletwitter" && AuthDetails.ownerid.indexOf(message.author.id) !== -1)
 		{
 			if (AuthDetails.twitterenable === "0")
 			{
@@ -268,7 +268,7 @@ bot.on("message", function (message, server)
 		}
 
 		//!disabletwitter command
-		if (message.content === "!disabletwitter" && message.author.id === AuthDetails.ownerid)
+		if (message.content === "!disabletwitter" && AuthDetails.ownerid.indexOf(message.author.id) !== -1)
 		{
 			if (AuthDetails.twitterenable === "1")
 			{
@@ -293,7 +293,7 @@ bot.on("message", function (message, server)
 		}
 
 		//!setgame command
-		if (msplit[0] === "!setgame" && message.author.id === AuthDetails.ownerid)
+		if (msplit[0] === "!setgame" && AuthDetails.ownerid.indexOf(message.author.id) !== -1)
 		{
 			if (message.content.indexOf(' ') === -1) 
 			{
@@ -309,7 +309,7 @@ bot.on("message", function (message, server)
 		}
 
 		//!setavatar command
-		if (msplit[0] === "!setavatar" && message.author.id === AuthDetails.ownerid)
+		if (msplit[0] === "!setavatar" && AuthDetails.ownerid.indexOf(message.author.id) !== -1)
 		{
 			if (message.content.indexOf(' ') === -1) 
 			{
@@ -356,7 +356,7 @@ bot.on("message", function (message, server)
 		}
 
 		//!setname command
-		if (msplit[0] === "!setname" && message.author.id === AuthDetails.ownerid)
+		if (msplit[0] === "!setname" && AuthDetails.ownerid.indexOf(message.author.id) !== -1)
 		{
 			if (message.content.indexOf(' ') === -1)
 			{
@@ -375,7 +375,7 @@ bot.on("message", function (message, server)
 		//!createchannel command
 		if (msplit[0] === "!createchannel")
 		{
-			if (message.author.id === AuthDetails.ownerid)
+			if (AuthDetails.ownerid.indexOf(message.author.id) !== -1)
 			{
 				if (message.content.indexOf(' ') !== -1) 
 				{
@@ -397,7 +397,7 @@ bot.on("message", function (message, server)
 		//!deletechannel command
 		if (msplit[0] === "!deletechannel")
 		{
-			if (message.author.id === AuthDetails.ownerid)
+			if (AuthDetails.ownerid.indexOf(message.author.id) !== -1)
 			{
 				if (message.content.indexOf(' ') !== -1) 
 				{
@@ -421,7 +421,7 @@ bot.on("message", function (message, server)
 		//settopic command
 		if (msplit[0] === "!settopic")
 		{
-			if (message.author.id === AuthDetails.ownerid)
+			if (AuthDetails.ownerid.indexOf(message.author.id) !== -1)
 			{
 				var newtopic = message.content
 				var newtopic = newtopic.substring("!settopic ".length);
@@ -450,7 +450,7 @@ bot.on("message", function (message, server)
 		}
 
 		//!kick command
-		if (msplit[0] === "!kick" && message.author.id === AuthDetails.ownerid) 
+		if (msplit[0] === "!kick" && AuthDetails.ownerid.indexOf(message.author.id) !== -1) 
 		{
 			if (message.mentions)
 			{
@@ -472,7 +472,7 @@ bot.on("message", function (message, server)
 		}
 
 		//!ban command
-		if (msplit[0] === "!ban" && message.author.id === AuthDetails.ownerid)
+		if (msplit[0] === "!ban" && AuthDetails.ownerid.indexOf(message.author.id) !== -1)
 		{
 			if (message.mentions)
 			{
@@ -511,7 +511,7 @@ bot.on("message", function (message, server)
 		//!help command for public channels
 		if (message.content === "!help")
 		{
-			if (message.author.id === AuthDetails.ownerid)
+			if (AuthDetails.ownerid.indexOf(message.author.id) !== -1)
 			{
 				bot.sendMessage(message.author.id, "AmberBot version **" + Version.version + "**, Published on **" + Version.releasedate + "**\n\n**Github** : <https://github.com/Xn2/Amber>\n\n**Invite link** : " + AuthDetails.invitelink + "\n\n**Commands list** : <http://s.xn2.fr/ambercommands>" + "\n\nYou are the **owner** of the bot");
 			}
@@ -610,7 +610,7 @@ bot.on("message", function (message, server)
 		}
 
 		//!tweet command
-		if (msplit[0] === "!tweet" && message.author.id === AuthDetails.ownerid)
+		if (msplit[0] === "!tweet" && AuthDetails.ownerid.indexOf(message.author.id) !== -1)
 		{
 			if (message.content.indexOf(' ') === -1)
 			{
@@ -700,7 +700,7 @@ bot.on("message", function (message, server)
 		//Ownership checker
 		if (message.content === AuthDetails.botname + ", am I your master?")
 		{
-			if (message.author.id === AuthDetails.ownerid)
+			if (AuthDetails.ownerid.indexOf(message.author.id) !== -1)
 				{
 					bot.reply(message, "Yes Daddy :heart:");
 				}
@@ -712,7 +712,7 @@ bot.on("message", function (message, server)
 	}
 
 	//!disconnect command
-	if (message.channel.isPrivate === true && message.author.id === AuthDetails.ownerid)
+	if (message.channel.isPrivate === true && AuthDetails.ownerid.indexOf(message.author.id) !== -1)
 	{
 		if (message.content === "!disconnect")
 		{
@@ -731,7 +731,7 @@ bot.on("message", function (message, server)
 	} 	
 
 	//!help command, for private channels
-	if (message.channel.isPrivate === true && message.author.id !== AuthDetails.ownerid)
+	if (message.channel.isPrivate === true && AuthDetails.ownerid.indexOf(message.author.id) !== -1)
 	{
 		if (message.content !== "!help")
 		{
