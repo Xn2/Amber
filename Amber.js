@@ -436,6 +436,12 @@ bot.on("message", function (message, server)
 			{
 				bot.sendMessage(message, "Usage : `!say #channel sometext`")
 			}
+			else if (message.content.indexOf('<#') === -1)
+			{
+				var texttosay = message.content;
+				var texttosay = texttosay.substring(msplit[0].length);
+				bot.sendMessage(message, texttosay)
+			}
 			else
 			{
 				var channel = msplit[1];
