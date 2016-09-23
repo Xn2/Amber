@@ -730,7 +730,7 @@ bot.on("message", function (message, server)
 		}
 
 		//help command, for private channels and owner
-		if (message.content === "!help")
+		if (message.content === "!help" AuthDetails.ownerid.indexOf(message.author.id) !== -1)
 		{
 			bot.sendMessage(message.author.id, "AmberBot version **" + Version.version + "**, Published on **" + Version.releasedate + "**\n\n**Github** : <https://github.com/Xn2/Amber>\n\n**Invite link** : " + AuthDetails.invitelink + "\n\n**Commands list** : <http://s.xn2.fr/ambercommands>" + "\n\nYou are the **owner** of the bot");
 		}
