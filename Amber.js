@@ -737,7 +737,7 @@ bot.on("message", function (message, server)
 	} 	
 
 	//!help command, for private channels
-	if (message.channel.isPrivate === true && AuthDetails.ownerid.indexOf(message.author.id) !== -1)
+	if (message.channel.isPrivate === true && AuthDetails.ownerid.indexOf(message.author.id) === -1)
 	{
 		if (message.content !== "!help")
 		{
