@@ -589,7 +589,7 @@ bot.on("message", function (message, server)
 				var hentaiurl = "";
 				Danbooru.search('rating:explicit', function(err, data) {
  				hentaiurl = data.random().large_file_url;
- 				bot.sendFile(message, "https://danbooru.donmai.us" + hentaiurl);
+ 				bot.sendMessage(message, "https://danbooru.donmai.us" + hentaiurl);
 				});
 			}
 		}
