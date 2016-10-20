@@ -432,26 +432,33 @@ bot.on("message", function (message, server)
 		//!say command
 		if (msplit[0] === "!say")
 		{
-			if (message.content.indexOf(' ') === -1)
+			if (message.author.name === AuthDetails.botname)
 			{
-				bot.sendMessage(message, "Usage : `!say #channel sometext`")
-			}
-			else if (message.content.indexOf('<#') === -1)
-			{
-				var texttosay = message.content;
-				var texttosay = texttosay.substring(msplit[0].length);
-				bot.sendMessage(message, texttosay)
+				return;
 			}
 			else
 			{
-				var channel = msplit[1];
-				var channel = channel.substring('<#'.length);
-				var channel = channel.slice(0, -1);
-				var texttosay = message.content;
-				var texttosay = texttosay.substring(msplit[0].length);
-				var texttosay = texttosay.substring(msplit[1].length);
-				var texttosay = texttosay.substring("> ".length)
-				bot.sendMessage(channel, texttosay)
+				if (message.content.indexOf(' ') === -1)
+				{
+					bot.sendMessage(message, "Usage : `!say #channel sometext`")
+				}
+				else if (message.content.indexOf('<#') === -1)
+				{
+					var texttosay = message.content;
+					var texttosay = texttosay.substring(msplit[0].length);
+					bot.sendMessage(message, texttosay)
+				}
+				else
+				{
+					var channel = msplit[1];
+					var channel = channel.substring('<#'.length);
+					var channel = channel.slice(0, -1);
+					var texttosay = message.content;
+					var texttosay = texttosay.substring(msplit[0].length);
+					var texttosay = texttosay.substring(msplit[1].length);
+					var texttosay = texttosay.substring("> ".length)
+					bot.sendMessage(channel, texttosay)
+				}
 			}
 		}
 
@@ -579,14 +586,11 @@ bot.on("message", function (message, server)
 
 			if (AuthDetails.nsfwenable === "1")
 			{
+				var hentaiurl = "";
 				Danbooru.search('rating:explicit', function(err, data) {
- 				data.random()
-      			.get()
-      			.pipe(require('fs').createWriteStream('./random.jpg'));
+ 				hentaiurl = data.random().large_file_url;
+ 				bot.sendFile(message, "https://danbooru.donmai.us" + hentaiurl);
 				});
-				setTimeout(function() {
-      			bot.sendFile(message, "./random.jpg")
-      			}, 4000);
 			}
 		}
 
